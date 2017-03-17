@@ -34,8 +34,14 @@ public class EngineMassiveCorePlayerUpdate extends Engine
 	// -------------------------------------------- //
 	// UPDATE
 	// -------------------------------------------- //
-	
-	public static void update(Player player, boolean current)
+
+
+	public static void update(Player player)
+	{
+		update(player, EventMassiveCorePlayerUpdate.CURRENT_DEFAULT);
+	}
+
+	public static void update(Player player, Boolean current)
 	{
 		// If this player is actually a player and not an NPC ...
 		if (MUtil.isntPlayer(player)) return;
@@ -57,25 +63,25 @@ public class EngineMassiveCorePlayerUpdate extends Engine
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void update(PlayerJoinEvent event)
 	{
-		update(event.getPlayer(), true);
+		update(event.getPlayer());
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void update(EventMassiveCoreAfterPlayerTeleport event)
 	{
-		update(event.getPlayer(), true);
+		update(event.getPlayer());
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void update(EventMassiveCoreAfterPlayerRespawn event)
 	{
-		update(event.getPlayer(), true);
+		update(event.getPlayer());
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void update(PlayerChangedWorldEvent event)
 	{
-		update(event.getPlayer(), true);
+		update(event.getPlayer());
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -84,7 +90,7 @@ public class EngineMassiveCorePlayerUpdate extends Engine
 		// Only on block change!
 		if (MUtil.isSameBlock(event)) return;
 		
-		update(event.getPlayer(), true);
+		update(event.getPlayer());
 	}
 	
 	// -------------------------------------------- //

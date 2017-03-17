@@ -2,7 +2,7 @@ package com.massivecraft.massivecore.event;
 
 import java.util.Set;
 
-import org.bukkit.entity.Damageable;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 
@@ -57,7 +57,27 @@ public class EventMassiveCorePlayerUpdate extends EventMassiveCore
 	private float walkSpeed;
 	public float getWalkSpeed() { return this.walkSpeed; }
 	public void setWalkSpeed(float walkSpeed) { this.walkSpeed = walkSpeed; }
-	
+
+	// -------------------------------------------- //
+	// CURRENT DEFAULT
+	// -------------------------------------------- //
+
+	// True means use current
+	// False means don't use current
+	// null means use the value specific default
+	public static final Boolean CURRENT_DEFAULT = null;
+	public static boolean isCurrent(Boolean specifiedCurrent, boolean defaultValueCurrent)
+	{
+		if (specifiedCurrent != null) return specifiedCurrent;
+		return defaultValueCurrent;
+	}
+
+	public static <T> T getValue(Boolean specifiedCurrent, boolean defaultValueCurrent, T defaultValue, T currentValue)
+	{
+		if (isCurrent(specifiedCurrent, defaultValueCurrent)) return currentValue;
+		return defaultValue;
+	}
+
 	// -------------------------------------------- //
 	// CONSTRUCT
 	// -------------------------------------------- //
@@ -65,7 +85,7 @@ public class EventMassiveCorePlayerUpdate extends EventMassiveCore
 	// With current true it will be an "update".
 	// With current false it will be a "reset".
 	
-	public EventMassiveCorePlayerUpdate(Player player, boolean current)
+	public EventMassiveCorePlayerUpdate(Player player, Boolean current)
 	{
 		this.player = player;
 		
@@ -79,13 +99,18 @@ public class EventMassiveCorePlayerUpdate extends EventMassiveCore
 	// -------------------------------------------- //
 	// RUN
 	// -------------------------------------------- //
-	
-	public static void run(Player player, boolean current)
+
+	public static void run(Player player, Boolean current)
 	{
 		if (MUtil.isntPlayer(player)) return;
-		
+
 		EventMassiveCorePlayerUpdate event = new EventMassiveCorePlayerUpdate(player, current);
 		event.run();
+
+		// If fly allowed is false, then fly active may not be true.
+		// Because fly active uses current=true and everything else current=false
+		// Then fly allowed might be reset when fly active doesn't get reset. That we do here.
+		if (!event.isFlyAllowed()) event.setFlyActive(false);
 		
 		setMaxHealth(player, event.getMaxHealth());
 		setFlyAllowed(player, event.isFlyAllowed());
@@ -96,12 +121,14 @@ public class EventMassiveCorePlayerUpdate extends EventMassiveCore
 	
 	public static void run(Player player)
 	{
-		run(player, true);
+		run(player, CURRENT_DEFAULT);
 	}
 
 	// -------------------------------------------- //
 	// MAX HEALTH
 	// -------------------------------------------- //
+
+	public static final boolean CURRENT_DEFAULT_MAX_HEALTH = false;
 
 	public static boolean setMaxHealth(Player player, double maxHealth)
 	{	
@@ -109,23 +136,20 @@ public class EventMassiveCorePlayerUpdate extends EventMassiveCore
 		if (getMaxHealth(player) == maxHealth) return false;
 		
 		// Apply
-		player.setMaxHealth(maxHealth);
+		player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(maxHealth);
 		
 		// Return
 		return true;
 	}
 	
-	public static double getMaxHealth(Player player, boolean current)
+	public static double getMaxHealth(Player player, Boolean current)
 	{
-		if ( ! current) return 20D; 
-		
-		Damageable d = (Damageable) player;
-		return d.getMaxHealth();
+		return getValue(current, CURRENT_DEFAULT_MAX_HEALTH, 20D, player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
 	}
 	
 	public static double getMaxHealth(Player player)
 	{
-		return getMaxHealth(player, true);
+		return getMaxHealth(player, CURRENT_DEFAULT);
 	}
 	
 	public static boolean resetMaxHealth(Player player)
@@ -136,6 +160,8 @@ public class EventMassiveCorePlayerUpdate extends EventMassiveCore
 	// -------------------------------------------- //
 	// FLY ALLOWED
 	// -------------------------------------------- //
+
+	public static final boolean CURRENT_DEFAULT_FLY_ALLOWED = false;
 	
 	// For backwards version compatibility we use the enumeration names rather than the enumerations themselves.
 	public static Set<String> FLY_DEFAULT_GAME_MODE_NAMES = new MassiveSet<String>(
@@ -157,11 +183,11 @@ public class EventMassiveCorePlayerUpdate extends EventMassiveCore
 		return true;
 	}
 	
-	public static boolean isFlyAllowed(Player player, boolean current)
+	public static boolean isFlyAllowed(Player player, Boolean current)
 	{
-		if ( ! current) return FLY_DEFAULT_GAME_MODE_NAMES.contains(player.getGameMode().name());
-		
-		return player.getAllowFlight();
+		boolean defaultValue = FLY_DEFAULT_GAME_MODE_NAMES.contains(player.getGameMode().name());
+		boolean currentValue = player.getAllowFlight();
+		return getValue(current, CURRENT_DEFAULT_FLY_ALLOWED, defaultValue, currentValue);
 	}
 	
 	public static boolean isFlyAllowed(Player player)
@@ -177,7 +203,11 @@ public class EventMassiveCorePlayerUpdate extends EventMassiveCore
 	// -------------------------------------------- //
 	// FLY ACTIVE
 	// -------------------------------------------- //
-	
+
+	// Fly active is the only value that can be affected by the player directly
+	// Therefore it is the only value where we use the current value.
+	public static final boolean CURRENT_DEFAULT_FLY_ACTIVE = true;
+
 	public static boolean setFlyActive(Player player, boolean active)
 	{
 		// NoChange
@@ -192,11 +222,11 @@ public class EventMassiveCorePlayerUpdate extends EventMassiveCore
 		return true;
 	}
 	
-	public static boolean isFlyActive(Player player, boolean current)
+	public static boolean isFlyActive(Player player, Boolean current)
 	{
-		if ( ! current) return FLY_DEFAULT_GAME_MODE_NAMES.contains(player.getGameMode().name());
-		
-		return player.isFlying();
+		boolean defaultValue = FLY_DEFAULT_GAME_MODE_NAMES.contains(player.getGameMode().name());
+		boolean currentValue = player.isFlying();
+		return getValue(current, CURRENT_DEFAULT_FLY_ACTIVE, defaultValue, currentValue);
 	}
 	
 	public static boolean isFlyActive(Player player)
@@ -214,6 +244,7 @@ public class EventMassiveCorePlayerUpdate extends EventMassiveCore
 	// -------------------------------------------- //
 	
 	public final static float DEFAULT_FLY_SPEED = 0.1f;
+	public static final boolean CURRENT_DEFAULT_FLY_SPEED = false;
 	
 	public static boolean setFlySpeed(Player player, float speed)
 	{
@@ -229,11 +260,9 @@ public class EventMassiveCorePlayerUpdate extends EventMassiveCore
 		return true;
 	}
 	
-	public static float getFlySpeed(Player player, boolean current)
+	public static float getFlySpeed(Player player, Boolean current)
 	{
-		if ( ! current) return DEFAULT_FLY_SPEED;
-		
-		return player.getFlySpeed();
+		return getValue(current, CURRENT_DEFAULT_FLY_SPEED, DEFAULT_FLY_SPEED, player.getFlySpeed());
 	}
 	
 	public static float getFlySpeed(Player player)
@@ -251,6 +280,7 @@ public class EventMassiveCorePlayerUpdate extends EventMassiveCore
 	// -------------------------------------------- //
 	
 	public final static float DEFAULT_WALK_SPEED = 0.2f;
+	public static final boolean CURRENT_DEFAULT_WALK_SPEED = false;
 	
 	public static boolean setWalkSpeed(Player player, float speed)
 	{
@@ -264,11 +294,9 @@ public class EventMassiveCorePlayerUpdate extends EventMassiveCore
 		return true;
 	}
 	
-	public static float getWalkSpeed(Player player, boolean current)
+	public static float getWalkSpeed(Player player, Boolean current)
 	{
-		if ( ! current) return DEFAULT_WALK_SPEED;
-		
-		return player.getWalkSpeed();
+		return getValue(current, CURRENT_DEFAULT_WALK_SPEED, DEFAULT_WALK_SPEED, player.getWalkSpeed());
 	}
 	
 	public static float getWalkSpeed(Player player)
