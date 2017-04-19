@@ -779,7 +779,7 @@ public class Coll<E extends Entity<E>> extends CollAbstract<E>
 		{
 			List<String> messages = new MassiveList<>();
 			messages.add(Txt.parse("<pink>%s", this.getDebugName()));
-			messages.add(Txt.parse("<aqua>%s", entity.getId()));
+			messages.add(Txt.parse("<RED>%s", entity.getId()));
 			messages.add(Txt.parse("<blue>%s", modification));
 			String message = Txt.implode(messages, Txt.parse("<silver> | "));
 			message = Txt.parse("<b>[lastRaw null] %s", message);
@@ -817,7 +817,7 @@ public class Coll<E extends Entity<E>> extends CollAbstract<E>
 		// Log
 		if (changes.isEmpty()) return;
 		changes.add(0, Txt.parse("<pink>%s", this.getDebugName()));
-		changes.add(1, Txt.parse("<aqua>%s", entity.getId()));
+		changes.add(1, Txt.parse("<RED>%s", entity.getId()));
 		String change = Txt.implode(changes, Txt.parse("<silver> | "));
 		String message = Txt.parse("<b>[Unreported Modification] %s", change);
 		

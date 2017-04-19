@@ -48,7 +48,7 @@ public class MassiveCommandHelp extends MassiveCommand
 		List<Mson> lines = new MassiveList<>();
 		for (Object helpline : parent.getHelp())
 		{
-			lines.add(mson(Mson.parse("<a># "), helpline).color(ChatColor.YELLOW));
+			lines.add(mson(Mson.parse("<a># "), helpline).color(ChatColor.GRAY));
 		}
 		
 		for (MassiveCommand child : parent.getChildren())

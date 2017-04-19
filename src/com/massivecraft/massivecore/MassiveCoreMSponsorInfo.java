@@ -43,9 +43,9 @@ public class MassiveCoreMSponsorInfo extends Entity<MassiveCoreMSponsorInfo>
 	
 	public List<String> consoleMsgs = new MassiveList<>(
 		"",
-		"<pink>____----====[ <aqua>Sponsored by ServerMiner<pink> ]====----____",
+		"<pink>____----====[ <RED>Sponsored by ServerMiner<pink> ]====----____",
 		"<lime>Get <gold>20% off<lime> a Premium Minecraft Server at ServerMiner:",
-		"<aqua>https://ServerMiner.com/?p=MassiveCraft",
+		"<RED>https://ServerMiner.com/?p=MassiveCraft",
 		"",
 		"<lime>Factions and MassiveCore is sponsored by ServerMiner.com!",
 		"<lime>They help us fund the development of new plugin features.",
@@ -66,9 +66,9 @@ public class MassiveCoreMSponsorInfo extends Entity<MassiveCoreMSponsorInfo>
 	
 	public List<String> ingameMsgs = new MassiveList<>(
 		"",
-		"<pink>____----====[ <aqua>Sponsored by ServerMiner<pink> ]====----____",
+		"<pink>____----====[ <RED>Sponsored by ServerMiner<pink> ]====----____",
 		"<lime>Get <gold>20% off<lime> a Premium Minecraft Server at ServerMiner:",
-		"<aqua>https://ServerMiner.com/?p=MassiveCraft",
+		"<RED>https://ServerMiner.com/?p=MassiveCraft",
 		"",
 		"<lime>Factions and MassiveCore is sponsored by ServerMiner.com!",
 		"<lime>They help us fund the development of new plugin features.",

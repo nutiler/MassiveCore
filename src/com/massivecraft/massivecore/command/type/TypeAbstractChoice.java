@@ -111,9 +111,9 @@ public abstract class TypeAbstractChoice<T> extends TypeAbstract<T> implements A
 	protected static final String MESSAGE_MATCH_AMBIGUOUS = Txt.parse("<b>%d %ss matches \"<h>%s<b>\".");
 	protected static final String MESSAGE_AVAILABLE_EMPTY = Txt.parse("<i>Note: There is no %s available.");
 	
-	protected static final String MESSAGE_COLON_AMBIGUOUS = Txt.parse("<aqua>Ambigous<silver>: ");
-	protected static final String MESSAGE_COLON_ALL = Txt.parse("<aqua>All<silver>: ");
-	protected static final String MESSAGE_COLON_SIMILAR = Txt.parse("<aqua>Similar<silver>: ");
+	protected static final String MESSAGE_COLON_AMBIGUOUS = Txt.parse("<RED>Ambigous<silver>: ");
+	protected static final String MESSAGE_COLON_ALL = Txt.parse("<RED>All<silver>: ");
+	protected static final String MESSAGE_COLON_SIMILAR = Txt.parse("<RED>Similar<silver>: ");
 	
 	protected static final String MESSAGE_SUGGESTIONS_EMPTY = Txt.parse("<i>No suggestions found.");
 	protected static final String MESSAGE_SUGGESTIONS_MUCH = Txt.parse("<i>Over %d suggestions found (hiding output).");

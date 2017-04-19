@@ -28,7 +28,7 @@ public class TypeEnchantment extends TypeAbstractChoice<Enchantment>
 		3, new MassiveList<>("Blast Protection", "PROTECTION_EXPLOSIONS", "ExplosionProtection"),
 		4, new MassiveList<>("Projectile Protection", "PROTECTION_PROJECTILE", "ProjectileProtection"),
 		5, new MassiveList<>("Respiration", "OXYGEN", "Breathing"),
-		6, new MassiveList<>("Aqua Affinity", "WATER_WORKER"),
+		6, new MassiveList<>("RED Affinity", "WATER_WORKER"),
 		7, new MassiveList<>("Thorns", "THORNS"),
 		8, new MassiveList<>("Depth Strider", "DEPTH_STRIDER"),
 		9, new MassiveList<>("Frost Walker", "FROST_WALKER"),
@@ -63,7 +63,7 @@ public class TypeEnchantment extends TypeAbstractChoice<Enchantment>
 	public TypeEnchantment()
 	{
 		super(Enchantment.class);
-		this.setVisualColor(ChatColor.AQUA);
+		this.setVisualColor(ChatColor.RED);
 		this.setAll(Enchantment.values());
 	}
 	

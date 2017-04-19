@@ -54,7 +54,7 @@ public class MassiveCommandVersion extends MassiveCommand
 		List<String> authorList = pdf.getAuthors();
 		if (authorList != null && authorList.size() > 0)
 		{
-			authors = Txt.implodeCommaAndDot(authorList, "<aqua>%s", "<i>, ", " <i>and ", "");
+			authors = Txt.implodeCommaAndDot(authorList, "<RED>%s", "<i>, ", " <i>and ", "");
 			authors = Txt.parse(authors);
 		}
 		
@@ -73,7 +73,7 @@ public class MassiveCommandVersion extends MassiveCommand
 	
 	public void sendEntry(String key, String value)
 	{
-		message(Txt.parse("<pink>%s: <aqua>%s", Txt.upperCaseFirst(key), value == null ? NOT_SPECIFIED : value));
+		message(Txt.parse("<pink>%s: <RED>%s", Txt.upperCaseFirst(key), value == null ? NOT_SPECIFIED : value));
 	}
 
 }

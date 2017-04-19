@@ -131,13 +131,13 @@ public class PropertyReflection<O, V> extends Property<O, V>
 				@Override
 				public Mson getVisualMsonInner(V value, CommandSender sender)
 				{
-					return Mson.mson(PropertyReflection.getName(field)).color(ChatColor.AQUA);
+					return Mson.mson(PropertyReflection.getName(field)).color(ChatColor.RED);
 				}
 				
 				@Override
 				public String getVisualInner(V value, CommandSender sender)
 				{
-					return ChatColor.AQUA + PropertyReflection.getName(field);
+					return ChatColor.RED + PropertyReflection.getName(field);
 				}
 			};
 		}

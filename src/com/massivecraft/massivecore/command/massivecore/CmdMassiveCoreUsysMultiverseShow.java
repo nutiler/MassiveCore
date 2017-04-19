@@ -45,9 +45,9 @@ public class CmdMassiveCoreUsysMultiverseShow extends MassiveCommand
 		for (String universe : multiverse.getUniverses())
 		{
 			if (universe.equals(MassiveCore.DEFAULT)) continue;
-			msg("<aqua>"+universe+"<i>: "+Txt.implodeCommaAndDot(multiverse.getWorlds(universe), "<h>%s", "<i>, ", " <i>and ", "<i>."));
+			msg("<RED>"+universe+"<i>: "+Txt.implodeCommaAndDot(multiverse.getWorlds(universe), "<h>%s", "<i>, ", " <i>and ", "<i>."));
 		}
-		msg("<aqua>default<i>: for all other worlds.");
+		msg("<RED>default<i>: for all other worlds.");
 		
 		msg("");
 		msg("<i>Aspects using this multiverse:");

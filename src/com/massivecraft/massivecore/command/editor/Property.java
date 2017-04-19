@@ -207,12 +207,12 @@ public abstract class Property<O, V> implements Named
 	
 	public Mson getDisplayNameMson()
 	{
-		return Mson.mson(this.getName()).color(ChatColor.AQUA);
+		return Mson.mson(this.getName()).color(ChatColor.RED);
 	}
 	
 	public String getDisplayName()
 	{
-		return ChatColor.AQUA.toString() + this.getName();
+		return ChatColor.RED.toString() + this.getName();
 	}
 	
 	public List<Mson> getShowLines(O object, CommandSender sender)

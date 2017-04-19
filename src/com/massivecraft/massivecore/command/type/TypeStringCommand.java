@@ -35,7 +35,7 @@ public class TypeStringCommand extends TypeAbstract<String>
 	public TypeStringCommand()
 	{
 		super(String.class);
-		this.setVisualColor(ChatColor.AQUA);
+		this.setVisualColor(ChatColor.RED);
 	}
 
 	@Override

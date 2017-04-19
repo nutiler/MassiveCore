@@ -1,8 +1,8 @@
-main: ${project.groupId}.${project.name}
-name: ${project.name}
-version: ${project.version}
-website: ${project.url}
-description: ${project.description}
+main: com.massivecraft.massivecore.MassiveCore
+name: MassiveCore
+version: 2.10.0
+website: https://www.massivecraft.com/massivecore
+description: §eMassiveCore is a plugin that contains libraries and features that other plugins make use of. §aCayorion§e from §aMassiveCraft§e is the developer. Feel free to visit us at §bhttps://www.massivecraft.com
 authors: [Cayorion]
 load: startup
 permissions:

@@ -83,7 +83,7 @@ public class CmdMassiveCoreTest extends MassiveCommand
 	
 	public Mson visualize(ItemStack... items)
 	{
-		List<Mson> msons = new MassiveList<>(Mson.mson(String.valueOf(items.length)).color(ChatColor.AQUA));
+		List<Mson> msons = new MassiveList<>(Mson.mson(String.valueOf(items.length)).color(ChatColor.RED));
 		for (ItemStack item : items)
 		{
 			msons.add(visualize(item));

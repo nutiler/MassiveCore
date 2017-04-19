@@ -151,7 +151,7 @@ public class CommandEditAbstract<O, V> extends MassiveCommand
 		// Before
 		// We inform what the value was before.
 		messages.add(mson(
-			mson("Before: ").color(ChatColor.AQUA),
+			mson("Before: ").color(ChatColor.RED),
 			descValue
 		));
 
@@ -163,7 +163,7 @@ public class CommandEditAbstract<O, V> extends MassiveCommand
 		// We inform what the value is after.
 		descValue = this.getInheritedVisual();
 		messages.add(mson(
-			mson("After: ").color(ChatColor.AQUA),
+			mson("After: ").color(ChatColor.RED),
 			descValue
 		));
 		

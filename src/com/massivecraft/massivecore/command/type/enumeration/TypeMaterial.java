@@ -18,7 +18,7 @@ public class TypeMaterial extends TypeEnum<Material>
 	{
 		super(Material.class);
 		this.setHelp(
-			Txt.parse("<aqua>https://hub.spigotmc.org/stash/projects/SPIGOT/repos/bukkit/browse/src/main/java/org/bukkit/Material.java")
+			Txt.parse("<RED>https://hub.spigotmc.org/stash/projects/SPIGOT/repos/bukkit/browse/src/main/java/org/bukkit/Material.java")
 		);
 	}
 	

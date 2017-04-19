@@ -39,7 +39,7 @@ public class Button
 	// -------------------------------------------- //
 	
 	// A button is either enabled or disabled. These are the two corresponding colors.
-	public static final ChatColor COLOR_ENABLED = ChatColor.AQUA;
+	public static final ChatColor COLOR_ENABLED = ChatColor.RED;
 	public static final ChatColor COLOR_DISABLED = ChatColor.GRAY;
 	
 	// -------------------------------------------- //

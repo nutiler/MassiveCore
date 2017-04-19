@@ -19,9 +19,9 @@ public class Lang
 	
 	public static final Mson COMMAND_REPLACEMENT = mson("REPLACEMENT");
 	
-	public static final Mson COMMAND_CHILD_AMBIGUOUS = mson("The sub command ", COMMAND_REPLACEMENT, " is ambiguous.").color(ChatColor.YELLOW);
-	public static final Mson COMMAND_CHILD_NONE = mson("The sub command ", COMMAND_REPLACEMENT, " couldn't be found.").color(ChatColor.YELLOW);
-	public static final Mson COMMAND_CHILD_HELP = mson("Use ", COMMAND_REPLACEMENT, " to see all commands.").color(ChatColor.YELLOW);
+	public static final Mson COMMAND_CHILD_AMBIGUOUS = mson("The sub command ", COMMAND_REPLACEMENT, " is ambiguous.").color(ChatColor.GRAY);
+	public static final Mson COMMAND_CHILD_NONE = mson("The sub command ", COMMAND_REPLACEMENT, " couldn't be found.").color(ChatColor.GRAY);
+	public static final Mson COMMAND_CHILD_HELP = mson("Use ", COMMAND_REPLACEMENT, " to see all commands.").color(ChatColor.GRAY);
 	
 	public static final String COMMAND_TOO_MANY_TAB_SUGGESTIONS = "<h>%d <b>tab completions available. Be more specific and try again.";
 }

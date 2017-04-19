@@ -274,7 +274,7 @@ public class TypeSound extends TypeEnum<Sound>
 	{
 		super(Sound.class);
 		this.setHelp(
-			Txt.parse("<aqua>https://hub.spigotmc.org/stash/projects/SPIGOT/repos/bukkit/browse/src/main/java/org/bukkit/Sound.java")
+			Txt.parse("<RED>https://hub.spigotmc.org/stash/projects/SPIGOT/repos/bukkit/browse/src/main/java/org/bukkit/Sound.java")
 		);
 	}
 	

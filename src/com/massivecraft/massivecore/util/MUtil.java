@@ -555,9 +555,9 @@ public class MUtil
 	public static String getStackTraceString(StackTraceElement element, boolean color)
 	{
 		ChatColor separatorColor = ChatColor.GRAY;
-		ChatColor classColor = ChatColor.YELLOW;
+		ChatColor classColor = ChatColor.GRAY;
 		ChatColor methodColor = ChatColor.GREEN;
-		ChatColor fileColor = ChatColor.AQUA;
+		ChatColor fileColor = ChatColor.RED;
 		ChatColor lineColor = ChatColor.LIGHT_PURPLE;
 		
 		String className = element.getClassName();
@@ -820,8 +820,8 @@ public class MUtil
 		{
 			case 0x00: return ChatColor.BLACK;
 			case 0x1: return ChatColor.DARK_BLUE;
-			case 0x2: return ChatColor.DARK_GREEN;
-			case 0x3: return ChatColor.DARK_AQUA;
+			case 0x2: return ChatColor.RED;
+			case 0x3: return ChatColor.WHITE;
 			case 0x4: return ChatColor.DARK_RED;
 			case 0x5: return ChatColor.DARK_PURPLE;
 			case 0x6: return ChatColor.GOLD;
@@ -829,10 +829,10 @@ public class MUtil
 			case 0x8: return ChatColor.DARK_GRAY;
 			case 0x9: return ChatColor.BLUE;
 			case 0xA: return ChatColor.GREEN;
-			case 0xB: return ChatColor.AQUA;
+			case 0xB: return ChatColor.RED;
 			case 0xC: return ChatColor.RED;
 			case 0xD: return ChatColor.LIGHT_PURPLE;
-			case 0xE: return ChatColor.YELLOW;
+			case 0xE: return ChatColor.GRAY;
 			case 0xF: return ChatColor.WHITE;
 			case 0x10: return ChatColor.MAGIC;
 			case 0x11: return ChatColor.BOLD;
@@ -854,17 +854,17 @@ public class MUtil
 			case 0x0: return ChatColor.WHITE;
 			case 0x1: return ChatColor.GOLD;
 			case 0x2: return ChatColor.LIGHT_PURPLE;
-			case 0x3: return ChatColor.AQUA;
-			case 0x4: return ChatColor.YELLOW;
+			case 0x3: return ChatColor.RED;
+			case 0x4: return ChatColor.GRAY;
 			case 0x5: return ChatColor.GREEN;
 			case 0x6: return ChatColor.LIGHT_PURPLE;
 			case 0x7: return ChatColor.DARK_GRAY;
 			case 0x8: return ChatColor.GRAY;
-			case 0x9: return ChatColor.DARK_AQUA;
+			case 0x9: return ChatColor.WHITE;
 			case 0xA: return ChatColor.DARK_PURPLE;
 			case 0xB: return ChatColor.BLUE;
 			case 0xC: return ChatColor.GRAY;
-			case 0xD: return ChatColor.DARK_GREEN;
+			case 0xD: return ChatColor.RED;
 			case 0xE: return ChatColor.RED;
 			case 0xF: return ChatColor.BLACK;
 		}

@@ -1098,7 +1098,7 @@ public class MassiveCommand implements Active, PluginIdentifiableCommand
 					// Message: "The sub command X couldn't be found."
 					// OR
 					// Message: "The sub command X is ambiguous."
-					Mson bluetoken = mson(token).color(ChatColor.AQUA);
+					Mson bluetoken = mson(token).color(ChatColor.RED);
 					MixinMessage.get().messageOne(sender, base.replaceAll(Lang.COMMAND_REPLACEMENT, bluetoken).command(this));
 				
 					// Message: "/f access ..."
@@ -1189,7 +1189,7 @@ public class MassiveCommand implements Active, PluginIdentifiableCommand
 			{
 				// Get the too many string slice
 				List<String> theTooMany = args.subList(this.getParameterCount(sender), args.size());
-				MixinMessage.get().msgOne(sender, Lang.COMMAND_TOO_MANY_ARGUMENTS, Txt.implodeCommaAndDot(theTooMany, Txt.parse("<aqua>%s"), Txt.parse("<b>, "), Txt.parse("<b> and "), ""));
+				MixinMessage.get().msgOne(sender, Lang.COMMAND_TOO_MANY_ARGUMENTS, Txt.implodeCommaAndDot(theTooMany, Txt.parse("<RED>%s"), Txt.parse("<b>, "), Txt.parse("<b> and "), ""));
 				MixinMessage.get().msgOne(sender, Lang.COMMAND_TOO_MANY_ARGUMENTS2);
 				MixinMessage.get().messageOne(sender, this.getTemplate());
 			}
@@ -1207,7 +1207,7 @@ public class MassiveCommand implements Active, PluginIdentifiableCommand
 	// TEMPLATE
 	// -------------------------------------------- //
 	
-	public static final Mson TEMPLATE_CORE = Mson.mson("/").color(ChatColor.AQUA);
+	public static final Mson TEMPLATE_CORE = Mson.mson("/").color(ChatColor.RED);
 	
 	public Mson getTemplate(boolean addDesc, boolean onlyFirstAlias, CommandSender sender)
 	{
@@ -1238,7 +1238,7 @@ public class MassiveCommand implements Active, PluginIdentifiableCommand
 			}
 			else
 			{
-				mson = mson.color(ChatColor.AQUA);
+				mson = mson.color(ChatColor.RED);
 			}
 			
 			if ( ! first) ret = ret.add(Mson.SPACE);
@@ -1260,14 +1260,14 @@ public class MassiveCommand implements Active, PluginIdentifiableCommand
 		for (Mson parameter : this.getTemplateParameters(sender))
 		{
 			ret = ret.add(Mson.SPACE);
-			ret = ret.add(parameter.color(ChatColor.DARK_AQUA));
+			ret = ret.add(parameter.color(ChatColor.WHITE));
 		}
 		
 		// Add desc
 		if (addDesc)
 		{
 			ret = ret.add(Mson.SPACE);
-			ret = ret.add(mson(this.getDesc()).color(ChatColor.YELLOW));
+			ret = ret.add(mson(this.getDesc()).color(ChatColor.GRAY));
 		}
 		
 		// Return Ret

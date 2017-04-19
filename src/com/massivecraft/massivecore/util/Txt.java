@@ -78,20 +78,20 @@ public class Txt
 		parseReplacements.put("<black>", "\u00A70");
 		parseReplacements.put("<navy>", "\u00A71");
 		parseReplacements.put("<green>", "\u00A72");
-		parseReplacements.put("<teal>", "\u00A73");
+		parseReplacements.put("<teal>", "\u00A7f");
 		parseReplacements.put("<red>", "\u00A74");
 		parseReplacements.put("<purple>", "\u00A75");
-		parseReplacements.put("<gold>", "\u00A76");
-		parseReplacements.put("<orange>", "\u00A76");
+		parseReplacements.put("<GRAY>", "\u00A77");
+		parseReplacements.put("<orange>", "\u00A77");
 		parseReplacements.put("<silver>", "\u00A77");
 		parseReplacements.put("<gray>", "\u00A78");
 		parseReplacements.put("<grey>", "\u00A78");
 		parseReplacements.put("<blue>", "\u00A79");
-		parseReplacements.put("<lime>", "\u00A7a");
-		parseReplacements.put("<aqua>", "\u00A7b");
+		parseReplacements.put("<lime>", "\u00A7c");
+		parseReplacements.put("<RED>", "\u00A7b");
 		parseReplacements.put("<rose>", "\u00A7c");
-		parseReplacements.put("<pink>", "\u00A7d");
-		parseReplacements.put("<yellow>", "\u00A7e");
+		parseReplacements.put("<pink>", "\u00A7c");
+		parseReplacements.put("<yellow>", "\u00A77");
 		parseReplacements.put("<white>", "\u00A7f");
 		parseReplacements.put("<magic>", "\u00A7k");
 		parseReplacements.put("<bold>", "\u00A7l");
@@ -107,29 +107,29 @@ public class Txt
 		// Color by semantic functionality
 		parseReplacements.put("<l>", "\u00A72");
 		parseReplacements.put("<logo>", "\u00A72");
-		parseReplacements.put("<a>", "\u00A76");
-		parseReplacements.put("<art>", "\u00A76");
+		parseReplacements.put("<a>", "\u00A77");
+		parseReplacements.put("<art>", "\u00A77");
 		parseReplacements.put("<n>", "\u00A77");
 		parseReplacements.put("<notice>", "\u00A77");
-		parseReplacements.put("<i>", "\u00A7e");
-		parseReplacements.put("<info>", "\u00A7e");
-		parseReplacements.put("<g>", "\u00A7a");
-		parseReplacements.put("<good>", "\u00A7a");
+		parseReplacements.put("<i>", "\u00A77");
+		parseReplacements.put("<info>", "\u00A77");
+		parseReplacements.put("<g>", "\u00A7c");
+		parseReplacements.put("<good>", "\u00A7c");
 		parseReplacements.put("<b>", "\u00A7c");
 		parseReplacements.put("<bad>", "\u00A7c");
 		
 		parseReplacements.put("<k>", "\u00A7b");
 		parseReplacements.put("<key>", "\u00A7b");
 		
-		parseReplacements.put("<v>", "\u00A7d");
-		parseReplacements.put("<value>", "\u00A7d");
-		parseReplacements.put("<h>", "\u00A7d");
-		parseReplacements.put("<highlight>", "\u00A7d");
+		parseReplacements.put("<v>", "\u00A7c");
+		parseReplacements.put("<value>", "\u00A7c");
+		parseReplacements.put("<h>", "\u00A7c");
+		parseReplacements.put("<highlight>", "\u00A7c");
 		
 		parseReplacements.put("<c>", "\u00A7b");
 		parseReplacements.put("<command>", "\u00A7b");
-		parseReplacements.put("<p>", "\u00A73");
-		parseReplacements.put("<parameter>", "\u00A73");
+		parseReplacements.put("<p>", "\u00A7f");
+		parseReplacements.put("<parameter>", "\u00A7f");
 		parseReplacements.put("&&", "&");
 		parseReplacements.put("§§", "§");
 		
@@ -445,7 +445,7 @@ public class Txt
 	{
 		if (InventoryUtil.isNothing(itemStack)) return Txt.parse("<silver><em>Nothing");
 		
-		ChatColor color = (itemStack.getEnchantments().size() > 0) ? ChatColor.AQUA : ChatColor.WHITE;
+		ChatColor color = (itemStack.getEnchantments().size() > 0) ? ChatColor.RED : ChatColor.WHITE;
 		
 		if (itemStack.hasItemMeta())
 		{
@@ -481,12 +481,12 @@ public class Txt
 	public static Mson titleize(Object obj)
 	{
 		Mson title = mson(obj);
-		if (title.getColor() == null) title = title.color(ChatColor.DARK_GREEN);
+		if (title.getColor() == null) title = title.color(ChatColor.RED);
 		
 		Mson center = mson(
-			mson(".[ ").color(ChatColor.GOLD),
+			mson(".[ ").color(ChatColor.GRAY),
 			title,
-			mson(" ].").color(ChatColor.GOLD)
+			mson(" ].").color(ChatColor.GRAY)
 		);
 		
 		int centerlen = center.length();
@@ -496,9 +496,9 @@ public class Txt
 
 		if (eatLeft < pivot)
 			return mson(
-				mson(titleizeLine.substring(0, pivot - eatLeft)).color(ChatColor.GOLD),
+				mson(titleizeLine.substring(0, pivot - eatLeft)).color(ChatColor.GRAY),
 				center,
-				mson(titleizeLine.substring(pivot + eatRight)).color(ChatColor.GOLD)
+				mson(titleizeLine.substring(pivot + eatRight)).color(ChatColor.GRAY)
 			);
 		else
 			return center;
@@ -506,7 +506,7 @@ public class Txt
 	
 	public static Mson getMessageEmpty()
 	{
-		return mson("Sorry, no pages available.").color(ChatColor.YELLOW);
+		return mson("Sorry, no pages available.").color(ChatColor.GRAY);
 	}
 	
 	public static Mson getMessageInvalid(int size)
@@ -532,7 +532,7 @@ public class Txt
 			return titleize(mson(
 				obj,
 				Mson.SPACE,
-				mson(pageHumanBased + "/" + pagecount).color(ChatColor.GOLD)
+				mson(pageHumanBased + "/" + pagecount).color(ChatColor.GRAY)
 			));
 		}
 		
@@ -545,18 +545,18 @@ public class Txt
 
 		// Mson
 		Mson centerMson = mson(
-			mson(".[ ").color(ChatColor.GOLD),
-			mson(obj, Mson.SPACE).color(ChatColor.DARK_GREEN),
+			mson(".[ ").color(ChatColor.GRAY),
+			mson(obj, Mson.SPACE).color(ChatColor.RED),
 			getFlipSection(pagecount, pageHumanBased, args, command),
-			mson(" ].").color(ChatColor.GOLD)
+			mson(" ].").color(ChatColor.GRAY)
 		);
 
 		if (eatLeft < pivot)
 		{
 			Mson ret = mson(
-				mson(titleizeLine.substring(0, pivot - eatLeft)).color(ChatColor.GOLD),
+				mson(titleizeLine.substring(0, pivot - eatLeft)).color(ChatColor.GRAY),
 				centerMson,
-				mson(titleizeLine.substring(pivot + eatRight)).color(ChatColor.GOLD)
+				mson(titleizeLine.substring(pivot + eatRight)).color(ChatColor.GRAY)
 			);
 
 			return ret;
@@ -650,29 +650,29 @@ public class Txt
 	private static Mson getFlipSection(int pagecount, int pageHumanBased, List<String> args, MassiveCommand command)
 	{
 		// Construct Mson
-		Mson start = mson(String.valueOf(pageHumanBased)).color(ChatColor.GOLD);
+		Mson start = mson(String.valueOf(pageHumanBased)).color(ChatColor.GRAY);
 		Mson backward = mson("[<] ").color(ChatColor.GRAY);
 		Mson forward = mson(" [>]").color(ChatColor.GRAY);
-		Mson end = mson(String.valueOf(pagecount)).color(ChatColor.GOLD);
+		Mson end = mson(String.valueOf(pagecount)).color(ChatColor.GRAY);
 
 		// Set flip page backward commands
 		if (pageHumanBased > 1)
 		{
 			start = setFlipPageCommand(start, pageHumanBased, 1, args, command);
-			backward = setFlipPageCommand(backward, pageHumanBased, pageHumanBased - 1, args, command).color(ChatColor.AQUA);
+			backward = setFlipPageCommand(backward, pageHumanBased, pageHumanBased - 1, args, command).color(ChatColor.RED);
 		}
 
 		// Set flip page forward commands
 		if (pagecount > pageHumanBased)
 		{
-			forward = setFlipPageCommand(forward, pageHumanBased, pageHumanBased + 1, args, command).color(ChatColor.AQUA);
+			forward = setFlipPageCommand(forward, pageHumanBased, pageHumanBased + 1, args, command).color(ChatColor.RED);
 			end = setFlipPageCommand(end, pageHumanBased, pagecount, args, command);
 		}
 		
 		Mson flipMson = mson(
 			backward,
 			start,
-			mson("/").color(ChatColor.GOLD),
+			mson("/").color(ChatColor.GRAY),
 			end,
 			forward
 		);

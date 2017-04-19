@@ -45,7 +45,7 @@ public class CmdMassiveCoreUsysMultiverseList extends MassiveCommand
 			@Override
 			public String toString(Multiverse multiverse, int index)
 			{
-				return Txt.parse("<h>" + multiverse.getId() + " <i>has " + Txt.implodeCommaAndDot(multiverse.getUniverses(), "<aqua>%s", "<i>, ", " <i>and ", "<i>."));
+				return Txt.parse("<h>" + multiverse.getId() + " <i>has " + Txt.implodeCommaAndDot(multiverse.getUniverses(), "<RED>%s", "<i>, ", " <i>and ", "<i>."));
 			}
 		}); 
 		

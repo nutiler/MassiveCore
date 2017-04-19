@@ -66,7 +66,7 @@ public class CmdMassiveCoreCmdurl extends MassiveCommand
 		
 		// Apply 
 		final Player commander = me;
-		msg("<i>Loading <aqua>%s <i>...", urlString);
+		msg("<i>Loading <RED>%s <i>...", urlString);
 		async(new Runnable()
 		{
 			@Override

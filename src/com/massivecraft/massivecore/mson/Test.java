@@ -9,7 +9,7 @@ import static com.massivecraft.massivecore.mson.Mson.mson;
 import static org.bukkit.ChatColor.BLUE;
 import static org.bukkit.ChatColor.GREEN;
 import static org.bukkit.ChatColor.RED;
-import static org.bukkit.ChatColor.YELLOW;
+import static org.bukkit.ChatColor.GRAY;
 
 public class Test
 {
@@ -157,7 +157,7 @@ public class Test
 			" or ",
 			mson("[deny]").style(GREEN).command("/asfd blah deny"),
 			"?"
-		).style(YELLOW);
+		).style(GRAY);
 		test("Would you like to [allow] or [deny]?");
 
 		// -------------------------------------------- //
@@ -167,7 +167,7 @@ public class Test
 
 		// Text multiColoredText = Texts.builder("Sponges are ").color(TextColors.YELLOW).append(Texts.builder("invincible!").color(TextColors.RED).build()).build();
 		mson = mson(
-			mson("Sponges are ").color(YELLOW),
+			mson("Sponges are ").color(GRAY),
 			mson("invincible!").color(RED)
 		);
 		test("Sponges are invincible");
